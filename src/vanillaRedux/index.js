@@ -1,12 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { cashReducer } from './cashReducer';
-import { customerReducer } from './customerReducer';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import mainReducer from './mainReducer';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
-  cash: cashReducer,
-  customers: customerReducer,
+  main: mainReducer,
 });
 
 export const store = createStore(
