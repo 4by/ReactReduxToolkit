@@ -1,23 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  increment,
-  decrement,
-  addTodo,
-  removeLastTodo,
-} from './toolkitRedux/toolkitSlice';
+import {increment, decrement, addTodo, removeLastTodo} from './toolkitSlice';
+//  from './vanillaRedux/mainReducer';
 
-const addAsyncTodo = () => {
-  return async (dispatch) => {
-    setTimeout(() => {
-      dispatch(addTodo('ASYNC TODO'));
-    }, 2000);
-  };
-};
+const addAsyncTodo = () =>
+  async dispatch => 
+    setTimeout(() => { dispatch(addTodo('ASYNC TODO')); }, 2000);
+  
+
 
 const App = () => {
-  const count = useSelector((state) => state.toolkit.count);
-  const todos = useSelector((state) => state.toolkit.todos);
+  const count = useSelector(state => state.toolkit.count);
+  const todos = useSelector(state => state.toolkit.todos);
   const dispatch = useDispatch();
 
   return (
@@ -31,9 +25,7 @@ const App = () => {
       <button onClick={() => dispatch(addTodo(prompt()))}>Add Todo</button>
       <button onClick={() => dispatch(addAsyncTodo())}>Add Async Todo</button>
       <ul>
-        {todos.map((todo, idx) => (
-          <li key={idx}>{todo}</li>
-        ))}
+        {todos.map((todo, idx) => <li key={idx}>{todo}</li>)}
       </ul>
     </div>
   );
