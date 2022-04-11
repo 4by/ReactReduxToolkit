@@ -10,7 +10,6 @@ export const addTodo = payload => ({ type: ADD_TODO, payload });
 export const removeLastTodo = () => ({ type: REMOVE_LAST_TODO });
 
 
-
 const initialState = {
   count: 0,
   todos: ['todo 1', 'todo 2', 'todo 3'],

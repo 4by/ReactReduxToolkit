@@ -2,12 +2,11 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {increment, decrement, addTodo, removeLastTodo} from './mainReducer';
 
-const addAsyncTodo = () =>
-  async dispatch => 
-    setTimeout(() => { dispatch(addTodo('ASYNC TODO')); }, 2000);
+const addAsyncTodo = (arg) => async dispatch => setTimeout(() => { dispatch(addTodo(arg)); }, 2000);
 
 
 const App = () => {
+ 
   const count = useSelector(state => state.main.count);
   const todos = useSelector(state => state.main.todos);
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ const App = () => {
         Remove last Todo
       </button>
       <button onClick={() => dispatch(addTodo(prompt()))}>Add Todo</button>
-      <button onClick={() => dispatch(addAsyncTodo())}>Add Async Todo</button>
+      <button onClick={() => dispatch(addAsyncTodo('ASYNC TODO'))}>Add Async Todo</button>
       <ul>
         {todos.map((todo, idx) => <li key={idx}>{todo}</li>)}
       </ul>
