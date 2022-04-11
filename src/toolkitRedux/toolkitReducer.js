@@ -1,14 +1,14 @@
-import { createAction, createReducer } from '@reduxjs/toolkit';
+// import { createAction, createReducer } from '@reduxjs/toolkit';
 
-const initialState = {
-  count: 0,
-  todos: ['todo 1', 'todo 2', 'todo 3'],
-};
+// const initialState = {
+//   count: 0,
+//   todos: ['todo 1', 'todo 2', 'todo 3'],
+// };
 
-export const increment = createAction('INCREMENT');
-export const decrement = createAction('DECREMENT');
+// export const increment = createAction('INCREMENT');
+// export const decrement = createAction('DECREMENT');
 
-export default createReducer(initialState, {
-  [increment]:  state => {state.count = state.count + 1},
-  [decrement]:  state => {state.count = state.count - 1},
-});
+// export default createReducer(initialState, {
+//   [increment]:  state => {state.count = state.count + 1},
+//   [decrement]:  state => {state.count = state.count - 1},
+// });
