@@ -1,13 +1,30 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import mainReducer from './mainReducer';
-import thunk from 'redux-thunk';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {increment, decrement, addTodo, removeLastTodo} from './mainReducer';
 
-const rootReducer = combineReducers({
-  main: mainReducer,
-});
+const addAsyncTodo = (arg) => async dispatch => setTimeout(() => { dispatch(addTodo(arg)); }, 2000);
 
-export const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+const App = () => {
+ 
+  const count = useSelector(state => state.main.count);
+  const todos = useSelector(state => state.main.todos);
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <h1>Counter {count}</h1>
+      <button onClick={() => dispatch(increment())}>Increment</button>
+      <button onClick={() => dispatch(decrement())}>Decrement</button>
+      <button onClick={() => dispatch(removeLastTodo())}>
+        Remove last Todo
+      </button>
+      <button onClick={() => dispatch(addTodo(prompt()))}>Add Todo</button>
+      <button onClick={() => dispatch(addAsyncTodo('ASYNC TODO'))}>Add Async Todo</button>
+      <ul>
+        {todos.map((todo, idx) => <li key={idx}>{todo}</li>)}
+      </ul>
+    </>
+  );
+};
+
+export default App;
