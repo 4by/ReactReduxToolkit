@@ -3,17 +3,12 @@ const DECREMENT = 'DECREMENT';
 const ADD_TODO = 'ADD_TODO';
 const REMOVE_LAST_TODO = 'REMOVE_LAST_TODO';
 
-
 export const increment = () => ({ type: INCREMENT });
 export const decrement = () => ({ type: DECREMENT });
 export const addTodo = payload => ({ type: ADD_TODO, payload });
 export const removeLastTodo = () => ({ type: REMOVE_LAST_TODO });
 
-
-const initialState = {
-  count: 0,
-  todos: ['todo 1', 'todo 2', 'todo 3'],
-};
+const initialState = { count: 0, todos: ['todo 1', 'todo 2', 'todo 3'] };
 
 export default function mainReducer(state = initialState, action) {
   switch (action.type) {
